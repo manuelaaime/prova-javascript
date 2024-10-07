@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 7    </title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+       
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        label, input {
+            display: block;
+            margin: 5px 0;
+        }
+        input {
+            margin-left: 15px;
+            width: 200px;
+        }
+        input, button{
+            border-radius: 4px;
+        }
+        .botao-container {
+            gap: 10px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        var produtos = [];
+
+        function adicionarProduto() {
+            var nome = document.getElementById("nome").value;
+            var preco = parseFloat(document.getElementById("preco").value);
+            var quantidade = parseInt(document.getElementById("quantidade").value);
+
+            if (nome && !isNaN(preco) && !isNaN(quantidade)) {
+                produtos.push({ nome: nome, preco: preco, quantidade: quantidade });
+
+                document.getElementById("nome").value = "";
+                document.getElementById("preco").value = "";
+                document.getElementById("quantidade").value = "";
+
+                exibirProdutos();
+            } else {
+                alert("Por favor, insira valores válidos para todos os campos.");
+            }
+        }
+
+        function exibirProdutos() {
+            var listaProdutos = document.getElementById("listaProdutos");
+            listaProdutos.innerHTML = "";
+
+            produtos.forEach(function(produto, index) {
+                listaProdutos.innerHTML += `${index + 1}. Nome: ${produto.nome}, Preço: R$ ${produto.preco}, Quantidade: ${produto.quantidade}<br>`;
+            });
+        }
+
+        function calcularValorTotalEstoque() {
+            var valorTotal = 0;
+
+            for (var i = 0; i < produtos.length; i++) {
+                valorTotal += produtos[i].preco * produtos[i].quantidade;
+            }
+
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = "Valor total do estoque: R$ " + valorTotal.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <div id ="container">
+    <h1>Cadastro de Produtos</h1>
+    <div class="form">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" placeholder="Nome do Produto">
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" placeholder="Preço do Produto" step="0.01">
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" placeholder="Quantidade em Estoque">
+    </div>
+    <div class="botao-container">
+        <button onclick="adicionarProduto()">Adicionar Produto</button>
+        <button onclick="calcularValorTotalEstoque()">Calcular Valor Total do Estoque</button>
+    </div>
+    <div id="listaProdutos"></div>
+    <div id="resultado"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 6</title>
+    <style>
+        #form {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: left;
+                justify-content: center;
+               
+            }
+        input{
+            margin-top: 5px;
+            margin-bottom: 10px;
+            margin-left:15px ;
+            width: 250px;
+        }
+        #botoes{
+            margin-left: 5px;
+        }
+        input, button{
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        var pessoas = [];
+
+        function adicionarPessoa() {
+            var nome = document.getElementById("nome").value;
+            var idade = parseInt(document.getElementById("idade").value);
+
+            if (nome && !isNaN(idade)) {
+                pessoas.push({ nome: nome, idade: idade });
+                document.getElementById("nome").value = "";
+                document.getElementById("idade").value = "";
+                exibirPessoas();
+            } else {
+                alert("Por favor, insira um nome e uma idade válida.");
+            }
+        }
+
+        function exibirPessoas() {
+            var listaPessoas = document.getElementById("listaPessoas");
+            listaPessoas.innerHTML = "";
+            for (var i = 0; i < pessoas.length; i++) {
+                listaPessoas.innerHTML += (i + 1) + ". " + pessoas[i].nome + ", " + pessoas[i].idade + " anos<br>";
+            }
+        }
+
+        function exibirMaioresDe18() {
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = "Maiores de 18 anos:<br>";
+            for (var i = 0; i < pessoas.length; i++) {
+                if (pessoas[i].idade >= 18) {
+                    resultado.innerHTML += pessoas[i].nome + "<br>";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="form">
+    <h1>Cadastro de Pessoas</h1>
+    <label>Nome:</label>
+    <input type="text" id="nome" placeholder="Digite o nome">
+    <label>Idade:</label>
+    <input type="number" id="idade" placeholder="Digite a idade">
+</div>
+<div id="botoes">
+    <button onclick="adicionarPessoa()">Adicionar Pessoa</button>
+    <button onclick="exibirMaioresDe18()">Exibir Maiores de 18</button>
+</div>
+
+    <br><br>
+    <div id="listaPessoas"></div>
+    <br>
+    <div id="resultado"></div>
+</body>
+</html>

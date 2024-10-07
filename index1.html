@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 1</title>
+    <style>
+        
+        input, button {
+            border-radius: 4px;
+        }
+        input{
+            width: 100px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var n1 = document.getElementById("n1");
+            var n2 = document.getElementById("n2");
+            var resultado = document.getElementById("resultado");
+
+            function somar() {
+                resultado.innerHTML = parseInt(n1.value) + parseInt(n2.value);
+            }
+            function subtrair() {
+                resultado.innerHTML = parseInt(n1.value) - parseInt(n2.value);
+            }
+            function multiplicar() {
+                resultado.innerHTML = parseInt(n1.value) * parseInt(n2.value);
+            }
+            function dividir() {
+                resultado.innerHTML = parseInt(n1.value) / parseInt(n2.value);
+            }
+
+            document.getElementById("somar").onclick = somar;
+            document.getElementById("subtrair").onclick = subtrair;
+            document.getElementById("multiplicar").onclick = multiplicar;
+            document.getElementById("dividir").onclick = dividir;
+        };
+    </script>
+</head>
+<body>
+    <h1>Calculadora</h1>
+
+    <label>Primeiro Número</label> <br/>
+    <input id="n1" type="number"/> <br/>
+    <label>Segundo Número</label><br/>
+    <input id="n2" type="number"/>
+
+    <br/><br/>
+    <button id="somar">+</button>
+    <button id="subtrair">-</button>
+    <button id="multiplicar">x</button>
+    <button id="dividir">/</button>
+    <br/><br/>
+    <label>O resultado é:</label> <span id="resultado"></span>
+</body>
+</html>

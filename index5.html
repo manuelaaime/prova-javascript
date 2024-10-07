@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 5</title>
+    <style>
+        #multiplo{
+            width: 100px;
+        }
+        input, button{
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function TabelaMultiplicacao() {
+            var numero = document.getElementById("multiplo").value
+        if (numero <= 0) {
+            console.log("O número deve ser positivo.");
+            return;
+        }
+    
+        for (var i = 1; i <= 10; i++) {
+            console.log(`${numero} x ${i} = ${numero * i}`);
+        }
+    }
+    </script>
+</head>
+<body>
+    <h1>Múltiplos de 1 a 10</h1>
+
+    <label>Múltiplo: </label> <br><br>
+    <input type="number" id="multiplo"
+     placeholder="Ex: 000"> <br><br>
+    <button onclick="TabelaMultiplicacao()">Multiplicar</button>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 3</title>
+    <style>
+        input, button {
+            border-radius: 4px;
+        }
+        .tarefa {
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        var tarefas = [];
+
+        function adicionarTarefa() {
+            var tarefaInput = document.getElementById("novaTarefa");
+            var tarefa = tarefaInput.value.trim();
+            if (tarefa !== "") {
+                tarefas.push(tarefa);
+                tarefaInput.value = "";
+                exibirTarefas();
+            }
+        }
+
+        function removerTarefa(index) {
+            tarefas.splice(index, 1);
+            exibirTarefas();
+        }
+
+        function exibirTarefas() {
+            var listaTarefas = document.getElementById("listaTarefas");
+            listaTarefas.innerHTML = "";
+            tarefas.forEach((tarefa, index) => {
+                listaTarefas.innerHTML += `<div class="tarefa">${index + 1}. ${tarefa} <button onclick="removerTarefa(${index})">Concluída</button></div>`;
+            });
+        }
+
+        window.onload = function() {
+            exibirTarefas();
+        };
+    </script>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="novaTarefa" placeholder="Digite uma nova tarefa">
+    <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+    <br><br>
+    <div id="listaTarefas"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 2</title>
+    <style>
+        input, button{
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function verificarPalindromo() {
+            var palavra = document.querySelector("#palavra").value;
+            var invertida = "";
+
+            for (var i = palavra.length - 1; i >= 0; i--) {
+                invertida += palavra[i];
+            }
+
+            var resultado = document.querySelector("#resultado");
+
+            if (palavra === invertida) {
+                resultado.textContent = palavra + " é um palíndromo.";
+            } else {
+                resultado.textContent = palavra + " não é um palíndromo.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Verificador de Palíndromos</h1>
+    <input type="text" id="palavra">
+    <button onclick="verificarPalindromo()">Verificar</button>
+    <br><br>
+    <label>Resposta:</label>
+    <span id="resultado"></span>
+</body>
+</html>
